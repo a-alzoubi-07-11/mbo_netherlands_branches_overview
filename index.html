@@ -333,7 +333,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </div>
+  
+<!------------------------------------------------- حاسبة التخصصات - أبل ستايل --------------------------------------------->
+<div class="card" style="margin-top: 20px; border-color: var(--cb); box-shadow: 0 8px 24px rgba(24,95,165,0.08);">
+    <div style="text-align: center; margin-bottom: 15px;">
+        <span class="badge bb">أداة تفاعلية</span>
+        <h3 style="font-size: 18px; margin: 10px 0 5px; color: var(--text);">اكتشف التخصص الأنسب لك</h3>
+        <p style="font-size: 13px; color: var(--text2);">أدخل اهتمامك لاكتشاف التخصص الأكثر طلباً وربحاً في السوق الهولندي.</p>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto; width: 100%;">
+        <select id="mbo-interest" style="width: 100%; padding: 12px; border: 1px solid var(--brd); border-radius: var(--rs); background: var(--bg3); color: var(--text); font-family: 'Tajawal', sans-serif; outline: none;">
+            <option value="tech">التقنية والبرمجيات (ICT & Techniek)</option>
+            <option value="health">الرعاية الصحية (Zorg)</option>
+            <option value="business">الاقتصاد والتجارة (Economie)</option>
+        </select>
+        <button onclick="calcMatch()" style="background: var(--cb); color: #fff; border: none; padding: 12px; border-radius: var(--rs); font-family: 'Tajawal', sans-serif; font-weight: 700; cursor: pointer;">تحليل النتيجة</button>
+    </div>
 
+    <div id="calc-result" style="display: none; margin-top: 15px; padding: 15px; background: var(--bg3); border-radius: var(--rs); border-right: 3px solid var(--cb);">
+        <p id="calc-text" style="font-size: 13px; color: var(--text); line-height: 1.6; margin: 0;"></p>
+    </div>
+</div>
+<script>
+    function calcMatch() {
+        const val = document.getElementById('mbo-interest').value;
+        const res = document.getElementById('calc-text');
+        if(val === 'tech') res.innerHTML = "<strong>المقترح:</strong> هندسة البرمجيات أو الأنظمة الذكية.<br><strong>الرواتب:</strong> تصل إلى €4.000<br><strong>رؤية 2030:</strong> طلب هائل ومستقبل آمن جداً من الذكاء الاصطناعي.";
+        else if(val === 'health') res.innerHTML = "<strong>المقترح:</strong> الرعاية الصحية المتقدمة والتمريض.<br><strong>الرواتب:</strong> تصل إلى €3.400<br><strong>رؤية 2030:</strong> القطاع الأكثر أماناً على الإطلاق (0% خطر استبدال).";
+        else res.innerHTML = "<strong>المقترح:</strong> التجارة الدولية الرقمية أو تحليل البيانات.<br><strong>الرواتب:</strong> تصل إلى €2.700<br><strong>رؤية 2030:</strong> تجنب المهام الإدارية البسيطة، وركز على التجارة الإلكترونية.";
+        document.getElementById('calc-result').style.display = 'block';
+    }
+</script>
+  <!--------------------------------------------------------------------------------------------------------------->
 <!-- ══════════════════════════════════════════ -->
 <!-- PAGE: BRANCHES -->
 <!-- ══════════════════════════════════════════ -->
