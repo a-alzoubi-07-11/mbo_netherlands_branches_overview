@@ -1090,234 +1090,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 </div><!-- end wrap -->
-<!-- تصميم حاسبة التخصصات والرواتب - على طراز أبل الفاخر -->
-<div class="apple-calculator-card">
-    <div class="apple-card-header">
-        <span class="apple-badge">مفكرة مستقبل هولندا 2026</span>
-        <h3>اكتشف تخصصك الأنسب في الـ MBO</h3>
-        <p>أدخل اهتمامك الرئيسي لنقودك نحو التخصص الأكثر طلباً وربحاً حتى عام 2030.</p>
-    </div>
 
-    <div class="apple-card-body">
-        <div class="apple-input-group">
-            <label for="mbo-interest">اختر مجالك المفضل:</label>
-            <select id="mbo-interest" class="apple-select">
-                <option value="tech">التقنية والبرمجيات (ICT & Techniek)</option>
-                <option value="business">الإدارة والأعمال والتجارة (Economie)</option>
-                <option value="health">الرعاية الصحية والتمريض (Zorg & Welzijn)</option>
-            </select>
-        </div>
-
-        <button onclick="calculateMboMatch()" class="apple-btn">ابدأ التحليل الذكي</button>
-
-        <div id="apple-result-box" class="apple-result" style="display: none;">
-            <h4>النتيجة والتوقعات المالية:</h4>
-            <p id="result-text"></p>
-        </div>
-    </div>
-</div>
-
-<style>
-    .apple-calculator-card {
-        background: #fbfbfd;
-        border: 1px solid #d2d2d7;
-        border-radius: 18px;
-        padding: 32px;
-        max-width: 600px;
-        margin: 40px auto;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-        transition: all 0.3s ease;
-    }
-    .apple-calculator-card:hover {
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    }
-    .apple-badge {
-        background: #e8e8ed;
-        color: #1d1d1f;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    .apple-card-header h3 {
-        color: #1d1d1f;
-        font-size: 24px;
-        margin: 12px 0 8px 0;
-        font-weight: 600;
-    }
-    .apple-card-header p {
-        color: #86868b;
-        font-size: 15px;
-        line-height: 1.5;
-        margin-bottom: 24px;
-    }
-    .apple-input-group {
-        margin-bottom: 20px;
-        text-align: right;
-    }
-    .apple-input-group label {
-        display: block;
-        color: #1d1d1f;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 8px;
-    }
-    .apple-select {
-        width: 100%;
-        padding: 12px 16px;
-        border: 1px solid #d2d2d7;
-        border-radius: 10px;
-        background: #ffffff;
-        color: #1d1d1f;
-        font-size: 15px;
-        outline: none;
-        transition: border-color 0.2s;
-    }
-    .apple-select:focus {
-        border-color: #0071e3;
-        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.12);
-    }
-    .apple-btn {
-        background-color: #0071e3;
-        color: #ffffff;
-        border: none;
-        border-radius: 10px;
-        padding: 12px 24px;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-        width: 100%;
-        transition: background-color 0.2s, transform 0.1s;
-    }
-    .apple-btn:hover {
-        background-color: #0077ed;
-    }
-    .apple-btn:active {
-        transform: scale(0.98);
-    }
-    .apple-result {
-        margin-top: 24px;
-        padding: 16px;
-        background: #f5f5f7;
-        border-radius: 10px;
-        border-right: 4px solid #0071e3;
-        text-align: right;
-    }
-    .apple-result h4 {
-        margin: 0 0 6px 0;
-        color: #1d1d1f;
-        font-size: 16px;
-    }
-    .apple-result p {
-        margin: 0;
-        color: #424245;
-        font-size: 14px;
-        line-height: 1.6;
-    }
-</style>
-
-<script>
-    function calculateMboMatch() {
-        const interest = document.getElementById('mbo-interest').value;
-        const resultBox = document.getElementById('apple-result-box');
-        const resultText = document.getElementById('result-text');
-        
-        let message = "";
-        if (interest === 'tech') {
-            message = "<strong>التخصص المقترح:</strong> هندسة البرمجيات والأنظمة الذكية (ICT).<br><strong>رؤية سوق العمل حتى 2030:</strong> طلب هائل جداً، ومتوسط الرواتب الأولية يبدأ تصاعدياً بقوة مع ميزات تنافسية عالية في الشركات الهولندية.";
-        } else if (interest === 'business') {
-            message = "<strong>التخصص المقترح:</strong> إدارة الأعمال الرقمية والتجارة الدولية.<br><strong>رؤية سوق العمل حتى 2030:</strong> استقرار عالٍ وفرص ممتازة لإدارة المشاريع الفردية (Eenmanszaak) والتوسع التجاري.";
-        } else {
-            message = "<strong>التخصص المقترح:</strong> الرعاية الصحية المتقدمة والتقنيات الطبية.<br><strong>رؤية سوق العمل حتى 2030:</strong> القطاع الأكثر طلباً وثباتاً في هولندا مع دعم حكومي وواسع للملفات المهنية.";
-        }
-        
-        resultText.innerHTML = message;
-        resultBox.style.display = 'block';
-    }
-</script>
-
-<!-- عداد الزوار التراكمي - ستايل أبل الفاخر -->
-<div class="apple-counter-wrapper">
-    <div class="apple-visitor-badge" title="عدد الزيارات التراكمية للموقع">
-        <svg class="apple-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-        <span class="apple-counter-text">إجمالي الزيارات:</span>
-        <span id="apple-visit-count" class="apple-counter-number">...</span>
-    </div>
-</div>
-
-<style>
-    .apple-counter-wrapper {
-        text-align: center;
-        margin: 24px 0;
-        direction: rtl;
-    }
-    .apple-visitor-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background-color: #fbfbfd;
-        border: 1px solid #d2d2d7;
-        padding: 8px 20px;
-        border-radius: 30px; /* شكل الكبسولة الأنيق */
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-        cursor: default;
-    }
-    .apple-visitor-badge:hover {
-        transform: scale(1.02);
-        background-color: #ffffff;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-    }
-    .apple-icon {
-        width: 16px;
-        height: 16px;
-        color: #86868b;
-    }
-    .apple-counter-text {
-        color: #86868b;
-        font-size: 13px;
-        font-weight: 500;
-    }
-    .apple-counter-number {
-        color: #0071e3; /* درجة اللون الأزرق الرسمية لأبل */
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // استخدام واجهة برمجية (API) مجانية ونظيفة لحساب الزيارات التراكمية بصمت
-        const namespace = "a-alzoubi-07-11-mbo-site";
-        const key = "total-visits";
-        
-        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
-            .then(response => response.json())
-            .then(data => {
-                // عرض الرقم مع فواصل الآلاف (مثال: 1,234)
-                document.getElementById('apple-visit-count').innerText = data.count.toLocaleString();
-            })
-            .catch(err => {
-                // في حال ضعف الإنترنت، يتم عرض نص أنيق بدلاً من تشوه التصميم
-                document.getElementById('apple-visit-count').innerText = "نشط";
-            });
-    });
-</script>
-
-  
   
 <!-- FOOTER -->
 <div class="footer">
   <p>📊 البيانات مستندة إلى: ROA 2025 (Maastricht University) · UWV 2025 · WEF Future of Jobs Report 2025 · CBS 2025 · CPB CEP فبراير 2025<br>جميع الأرقام تقريبية ومبنية على التقارير المتاحة — قد تتغير حسب السوق</p>
   <div class="cby">تم الإنشاء بواسطة أحمد الزعبي</div>
+  <!-- عداد زوار أبل الفاخر -->
+<div style="display: flex; justify-content: center; margin-bottom: 15px;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: var(--bg2); border: 0.5px solid var(--brd); padding: 6px 16px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cb)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        <span style="font-size: 12px; color: var(--text2); font-weight: 500;">إجمالي الزيارات:</span>
+        <span id="apple-visit-count" style="font-size: 14px; color: var(--text); font-weight: 700;">...</span>
+    </div>
+</div>
+<script>
+    fetch('https://api.counterapi.dev/v1/a-alzoubi-07-mbo/visits/up')
+        .then(r => r.json()).then(d => document.getElementById('apple-visit-count').innerText = d.count.toLocaleString())
+        .catch(() => document.getElementById('apple-visit-count').innerText = "نشط");
+</script>
   <div class="slinks">
     <a href="https://www.youtube.com/@a.alzoubi.07.11" target="_blank" class="sbtn yt">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
