@@ -1239,7 +1239,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 </script>
 
+<!-- عداد الزوار التراكمي - ستايل أبل الفاخر -->
+<div class="apple-counter-wrapper">
+    <div class="apple-visitor-badge" title="عدد الزيارات التراكمية للموقع">
+        <svg class="apple-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span class="apple-counter-text">إجمالي الزيارات:</span>
+        <span id="apple-visit-count" class="apple-counter-number">...</span>
+    </div>
+</div>
 
+<style>
+    .apple-counter-wrapper {
+        text-align: center;
+        margin: 24px 0;
+        direction: rtl;
+    }
+    .apple-visitor-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #fbfbfd;
+        border: 1px solid #d2d2d7;
+        padding: 8px 20px;
+        border-radius: 30px; /* شكل الكبسولة الأنيق */
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        cursor: default;
+    }
+    .apple-visitor-badge:hover {
+        transform: scale(1.02);
+        background-color: #ffffff;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+    .apple-icon {
+        width: 16px;
+        height: 16px;
+        color: #86868b;
+    }
+    .apple-counter-text {
+        color: #86868b;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .apple-counter-number {
+        color: #0071e3; /* درجة اللون الأزرق الرسمية لأبل */
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // استخدام واجهة برمجية (API) مجانية ونظيفة لحساب الزيارات التراكمية بصمت
+        const namespace = "a-alzoubi-07-11-mbo-site";
+        const key = "total-visits";
+        
+        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+            .then(response => response.json())
+            .then(data => {
+                // عرض الرقم مع فواصل الآلاف (مثال: 1,234)
+                document.getElementById('apple-visit-count').innerText = data.count.toLocaleString();
+            })
+            .catch(err => {
+                // في حال ضعف الإنترنت، يتم عرض نص أنيق بدلاً من تشوه التصميم
+                document.getElementById('apple-visit-count').innerText = "نشط";
+            });
+    });
+</script>
+
+  
   
 <!-- FOOTER -->
 <div class="footer">
