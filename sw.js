@@ -1,1 +1,20 @@
-const CACHE="mbo-netherlands-v2";const CORE=["./","./index.html","./manifest.webmanifest"];self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));self.addEventListener("activate",e=>e.waitUntil(self.clients.claim()));self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(x=>x||fetch(e.request).then(r=>{if(r.ok&&new URL(e.request.url).origin===location.origin){const c=r.clone();caches.open(CACHE).then(k=>k.put(e.request,c))}return r}).catch(()=>x)))})
+const CACHE="mbo-netherlands-v4";
+const CORE=["./","./index.html","./articles.html","./about.html","./privacy.html","./contact.html","./manifest.webmanifest"];
+self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener("fetch",e=>{
+  if(e.request.method!=="GET")return;
+  e.respondWith(
+    caches.match(e.request).then(cached=>{
+      const request=e.request;
+      const fresh=fetch(request).then(response=>{
+        if(response.ok && new URL(request.url).origin===location.origin){
+          const copy=response.clone();
+          caches.open(CACHE).then(c=>c.put(request,copy));
+        }
+        return response;
+      }).catch(()=>cached);
+      return cached || fresh;
+    })
+  );
+});
