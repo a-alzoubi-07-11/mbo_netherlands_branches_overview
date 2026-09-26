@@ -57,10 +57,10 @@ gtag('config', 'G-13HKYB9R0F');
     footer { text-align: center; padding: 1.5rem; background: #222; color: #ccc; margin-top: 3rem; }
   </style>
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://a-alzoubi-07-11.github.io/articles/mbo-conditions.html">
-  <meta property="og:type" content="article"><meta property="og:locale" content="ar_AR">
+  <link rel="canonical" href="https://a-alzoubi-07-11.github.io/mbo_netherlands_branches_overview/articles/mbo-conditions.html">
+  <meta property="og:type" content="article"><meta property="og:locale" content="ar_AR"><meta property="og:locale:alternate" content="nl_NL">
   <link rel="stylesheet" href="../assets/article.css">
-</head>
+<style>.article-topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 18px;background:rgba(255,255,255,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.08)}.article-topbar a{color:#0059b3;text-decoration:none;font-weight:700}.article-topbar button{border:0;border-radius:999px;padding:8px 14px;background:#111;color:#fff;font-weight:700;cursor:pointer}.article-language[hidden]{display:none!important}.article-footer-links{margin-bottom:8px}.article-footer-links a{color:#fff}.article-language .container{margin-top:1rem}</style></head>
 <body>
 
   <header>
@@ -74,7 +74,7 @@ gtag('config', 'G-13HKYB9R0F');
     <a href="../about.html">من نحن</a>
   </nav>
 
-  <div class="container">
+  <div class="article-topbar"><a href="../index.html">الرئيسية / Home</a><button id="articleLang" type="button" aria-label="تغيير اللغة">NL</button></div><div id="article-ar" class="article-language"><div class="container">
     <h1>كل ما تحتاج معرفته عن امتحان اللغة الهولندية NT2 (مستوى B1)</h1>
     <p><em>تاريخ التحديث: سبتمبر 2026</em></p>
 
@@ -142,11 +142,23 @@ gtag('config', 'G-13HKYB9R0F');
 
     <p><a href="../index.html" style="color: #0059b3; font-weight: bold; text-decoration: none;">← العودة إلى الصفحة الرئيسية</a></p>
   </div>
-
-  <footer>
+</div><div id="article-nl" class="article-language" hidden><div class="container"><h1>NT2 Staatsexamen Programma I (B1): complete gids</h1><p><em>Bijgewerkt: september 2026</em></p><div class="direct-answer"><strong>Korte uitleg:</strong> Het Staatsexamen NT2 Programma I is bedoeld voor taalniveau B1 en bestaat uit lezen, luisteren, spreken en schrijven.</div><h2>1. De vier onderdelen</h2><table><tr><th>Onderdeel</th><th>Wat doet u?</th></tr><tr><td>Lezen</td><td>Teksten lezen en vragen beantwoorden.</td></tr><tr><td>Luisteren</td><td>Audio en video beluisteren en vragen beantwoorden.</td></tr><tr><td>Spreken</td><td>Antwoorden inspreken via de computer.</td></tr><tr><td>Schrijven</td><td>Berichten, formulieren en korte teksten schrijven.</td></tr></table><h2>2. Voorbereiden op Schrijven</h2><ul><li>Oefen met officiële en eerdere oefentaken.</li><li>Laat uw teksten controleren op grammatica.</li><li>Gebruik duidelijke, correcte zinnen.</li></ul><h2>3. Veelgestelde vragen</h2><div class="faq-box"><strong>Kan ik één onderdeel opnieuw doen?</strong><p>Wanneer de examenregels dit toestaan, kunt u een niet-gehaald onderdeel opnieuw afleggen.</p></div><div class="faq-box"><strong>Wanneer krijg ik de uitslag?</strong><p>De uitslag wordt doorgaans enkele weken na het examen beschikbaar gemaakt via DUO.</p></div><p><a href="../index.html" style="color:#0059b3;font-weight:bold;text-decoration:none">← Terug naar de homepage</a></p></div></div>
+  <footer><div class="article-footer-links"><a href="../index.html">Home</a> · <a href="../articles.html">Artikelen / Articles</a> · <a href="../about.html">Over ons / من نحن</a></div>
     <p>جميع الحقوق محفوظة © 2026 - الدليل الشامل للتعليم في هولندا</p>
   </footer>
 
-  <script src="../assets/article.js" defer></script>
+  <script>
+(function(){
+ const key='mbo_site_lang';
+ const btn=document.getElementById('articleLang'), ar=document.getElementById('article-ar'), nl=document.getElementById('article-nl');
+ function setLang(lang){
+   const isNL=lang==='nl'; ar.hidden=isNL; nl.hidden=!isNL;
+   document.documentElement.lang=isNL?'nl':'ar'; document.documentElement.dir=isNL?'ltr':'rtl';
+   btn.textContent=isNL?'AR':'NL'; localStorage.setItem(key,lang);
+ }
+ btn.addEventListener('click',()=>setLang(localStorage.getItem(key)==='nl'?'ar':'nl'));
+ setLang(localStorage.getItem(key)==='nl'?'nl':'ar');
+})();
+</script><script src="../assets/article.js" defer></script>
 </body>
 </html>
