@@ -56,10 +56,10 @@ gtag('config', 'G-13HKYB9R0F');
     footer { text-align: center; padding: 1.5rem; background: #222; color: #ccc; margin-top: 3rem; }
   </style>
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://a-alzoubi-07-11.github.io/articles/digid-registration-guide.html">
-  <meta property="og:type" content="article"><meta property="og:locale" content="ar_AR">
+  <link rel="canonical" href="https://a-alzoubi-07-11.github.io/mbo_netherlands_branches_overview/articles/digid-registration-guide.html">
+  <meta property="og:type" content="article"><meta property="og:locale" content="ar_AR"><meta property="og:locale:alternate" content="nl_NL">
   <link rel="stylesheet" href="../assets/article.css">
-</head>
+<style>.article-topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 18px;background:rgba(255,255,255,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.08)}.article-topbar a{color:#0059b3;text-decoration:none;font-weight:700}.article-topbar button{border:0;border-radius:999px;padding:8px 14px;background:#111;color:#fff;font-weight:700;cursor:pointer}.article-language[hidden]{display:none!important}.article-footer-links{margin-bottom:8px}.article-footer-links a{color:#fff}.article-language .container{margin-top:1rem}</style></head>
 <body>
 
   <header>
@@ -69,11 +69,11 @@ gtag('config', 'G-13HKYB9R0F');
 
   <nav>
     <a href="../index.html">الرئيسية</a>
-    <a href="housing-rent-allowance-2026.html">بدل السكن</a>
+    <a href="../articles.html">بدل السكن</a>
     <a href="../about.html">من نحن</a>
   </nav>
 
-  <div class="container">
+  <div class="article-topbar"><a href="../index.html">الرئيسية / Home</a><button id="articleLang" type="button" aria-label="تغيير اللغة">NL</button></div><div id="article-ar" class="article-language"><div class="container">
     <h1>الدليل الشامل للتسجيل واستخدام الهوية الرقمية (DigiD) في هولندا</h1>
     <p><em>تاريخ التحديث: أواخر 2026</em></p>
 
@@ -108,11 +108,23 @@ gtag('config', 'G-13HKYB9R0F');
 
     <p><a href="../index.html" style="color: #0059b3; font-weight: bold; text-decoration: none;">← العودة إلى الصفحة الرئيسية</a></p>
   </div>
-
-  <footer>
+</div><div id="article-nl" class="article-language" hidden><div class="container"><h1>De complete gids voor DigiD in Nederland</h1><p><em>Bijgewerkt: eind 2026</em></p><div class="direct-answer"><strong>Wat is DigiD?</strong> DigiD is het veilige digitale identificatiesysteem waarmee u online uw identiteit kunt bewijzen. U gebruikt het onder andere voor Belastingdienst, gemeente, zorg en DUO.</div><h2>1. DigiD aanvragen en activeren</h2><p>Voor een eerste aanvraag heeft u onder meer een BSN en een registratie bij uw gemeente nodig.</p><ol><li>Ga naar de officiële website van DigiD en kies <strong>Aanvragen</strong>.</li><li>Vul uw BSN, geboortedatum en postcode in.</li><li>Kies een gebruikersnaam en sterk wachtwoord.</li><li>Voeg uw mobiele nummer en e-mailadres toe.</li><li>U ontvangt een activeringscode per post op uw geregistreerde adres.</li><li>Voer de code in om DigiD te activeren.</li></ol><h2>2. Waarom de DigiD-app?</h2><p>De DigiD-app maakt inloggen eenvoudiger en veiliger. Afhankelijk van de dienst kunt u extra controle, zoals de ID-check, gebruiken.</p><div class="faq-box"><strong>Wat als ik mijn wachtwoord kwijt ben?</strong><p>U kunt uw wachtwoord herstellen als herstel via e-mail en sms eerder is ingesteld. Anders kan een nieuwe aanvraag nodig zijn.</p></div><p><a href="../index.html" style="color:#0059b3;font-weight:bold;text-decoration:none">← Terug naar de homepage</a></p></div></div>
+  <footer><div class="article-footer-links"><a href="../index.html">Home</a> · <a href="../articles.html">Artikelen / Articles</a> · <a href="../about.html">Over ons / من نحن</a></div>
     <p>جميع الحقوق محفوظة © 2026 - الدليل الشامل للتعليم والمجتمع في هولندا</p>
   </footer>
 
-  <script src="../assets/article.js" defer></script>
+  <script>
+(function(){
+ const key='mbo_site_lang';
+ const btn=document.getElementById('articleLang'), ar=document.getElementById('article-ar'), nl=document.getElementById('article-nl');
+ function setLang(lang){
+   const isNL=lang==='nl'; ar.hidden=isNL; nl.hidden=!isNL;
+   document.documentElement.lang=isNL?'nl':'ar'; document.documentElement.dir=isNL?'ltr':'rtl';
+   btn.textContent=isNL?'AR':'NL'; localStorage.setItem(key,lang);
+ }
+ btn.addEventListener('click',()=>setLang(localStorage.getItem(key)==='nl'?'ar':'nl'));
+ setLang(localStorage.getItem(key)==='nl'?'nl':'ar');
+})();
+</script><script src="../assets/article.js" defer></script>
 </body>
 </html>
