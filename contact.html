@@ -24,7 +24,8 @@
 .socials{display:grid;gap:11px}.social{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:18px;text-decoration:none;color:var(--text);background:#fff;transition:.2s}.social:hover{transform:translateY(-2px);box-shadow:0 10px 25px #0000000b}.icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:#f2f2f7;font-size:21px}.social strong{display:block}.social span{display:block;color:var(--muted);font-size:12px}
 .note{font-size:13px;color:var(--muted);margin-top:12px}.contact-link{display:inline-flex;margin-top:10px;color:var(--blue);font-weight:800;text-decoration:none}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.nav{display:none}.hero{padding-top:42px}.card{padding:21px;border-radius:23px}}
- .contact-email{display:inline-block;margin:0 0 16px;color:#0071e3;font-weight:800;text-decoration:none} </style></head>
+ .contact-email{display:inline-block;margin:0 0 16px;color:#0071e3;font-weight:800;text-decoration:none} </style><link rel="stylesheet" href="./assets/phase2.css">
+</head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC8QB637" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="wrap">
@@ -83,4 +84,5 @@ document.getElementById("lang").onclick=()=>{const n=(localStorage.getItem("lang
 document.getElementById("contactForm").addEventListener("submit",e=>{e.preventDefault();const l=localStorage.getItem("lang")||"ar";const topic=document.getElementById("topic");const subject=topic.options[topic.selectedIndex].textContent;const body=(l==="ar"?"الاسم: ":"Name: ")+document.getElementById("name").value+"\n"+(l==="ar"?"البريد: ":"Email: ")+document.getElementById("email").value+"\n"+(l==="ar"?"الموضوع: ":"Subject: ")+subject+"\n\n"+document.getElementById("message").value;const mailto="mailto:a.alzoubi.07.11@gmail.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);window.location.href=mailto;const s=document.getElementById("status");s.textContent=T[l].status;s.classList.add("show")});
 apply();
 </script>
+<script src="./assets/phase2.js" defer></script>
 </body></html>
