@@ -1011,7 +1011,23 @@ body{
 }
 
 </style>
-</head>
+<style id="ahmad-modern-overhaul">
+:root{--apple-bg:#f5f5f7;--apple-card:rgba(255,255,255,.82);--apple-text:#1d1d1f;--apple-muted:#6e6e73;--apple-blue:#0071e3;--apple-border:rgba(0,0,0,.08);--apple-shadow:0 18px 50px rgba(0,0,0,.08)}
+html{scroll-behavior:smooth}body{background:var(--apple-bg);color:var(--apple-text)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 0%,rgba(0,113,227,.09),transparent 30%),radial-gradient(circle at 90% 10%,rgba(175,82,222,.08),transparent 28%);z-index:-1}
+.mbo-modern-shell{max-width:1180px;margin:28px auto 0;padding:0 18px}.mbo-modern-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mbo-modern-card{background:var(--apple-card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--apple-border);border-radius:24px;padding:22px;box-shadow:var(--apple-shadow);transition:.25s transform,.25s box-shadow}
+.mbo-modern-card:hover{transform:translateY(-3px);box-shadow:0 24px 65px rgba(0,0,0,.12)}.mbo-modern-card h3{margin:0 0 8px;font-size:19px;letter-spacing:-.02em}.mbo-modern-card p{color:var(--apple-muted);line-height:1.65;margin:0}
+.mbo-modern-icon{font-size:28px;margin-bottom:12px}.mbo-modern-kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--apple-blue);margin-bottom:7px}
+.mbo-section-title{font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.045em;margin:0 0 12px}.mbo-section-sub{color:var(--apple-muted);font-size:17px;line-height:1.7;max-width:760px}
+.mbo-articles{margin:46px auto}.mbo-article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.mbo-article{display:flex;flex-direction:column;min-height:250px}.mbo-article .mbo-article-link{margin-top:auto;color:var(--apple-blue);font-weight:700;text-decoration:none;padding-top:18px}
+.mbo-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.mbo-tool{border:1px solid var(--apple-border);background:rgba(255,255,255,.7);border-radius:999px;padding:10px 14px;cursor:pointer;font-weight:700;color:inherit}.mbo-tool:hover{background:#fff}
+.mbo-ad-slot{min-height:90px;border:1px dashed rgba(0,0,0,.16);border-radius:20px;display:flex;align-items:center;justify-content:center;color:#8e8e93;font-size:13px;margin:24px auto;max-width:980px;background:rgba(255,255,255,.38)}
+html[data-theme="dark"]{--apple-bg:#000;--apple-card:rgba(28,28,30,.84);--apple-text:#f5f5f7;--apple-muted:#a1a1a6;--apple-border:rgba(255,255,255,.12);--apple-shadow:0 18px 55px rgba(0,0,0,.35)}
+html[data-theme="dark"] body:before{background:radial-gradient(circle at 10% 0%,rgba(10,132,255,.12),transparent 30%),radial-gradient(circle at 90% 10%,rgba(191,90,242,.10),transparent 28%)}html[data-theme="dark"] .mbo-tool{background:rgba(44,44,46,.8);color:#fff}
+@media(max-width:900px){.mbo-modern-grid{grid-template-columns:repeat(2,1fr)}.mbo-article-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.mbo-modern-shell{padding:0 12px}.mbo-modern-grid,.mbo-article-grid{grid-template-columns:1fr}.mbo-modern-card{border-radius:20px;padding:18px}.mbo-tools{overflow:auto;flex-wrap:nowrap;padding-bottom:4px}.mbo-tool{white-space:nowrap}}
+</style><meta name="description" content="دليل عربي وهولندي للتعليم والتخصصات والعمل والحياة في هولندا، مع أدوات ومعلومات عملية للعرب الجدد."><meta name="robots" content="index,follow"><meta property="og:title" content="MBO Netherlands — دليل التعليم والحياة في هولندا"><meta property="og:description" content="تعليم، عمل، رواتب، ضرائب وخدمات للعرب الجدد في هولندا."><meta name="theme-color" content="#f5f5f7"></head>
 <body>
 
 <div class="scroll-progress" id="scroll-prog" aria-hidden="true"></div>
@@ -1068,7 +1084,27 @@ body{
       <span class="hbadge" data-i18n="hero.b3">🔄 انتقالات كاملة</span>
     </div>
   </div>
-</section>
+</section><section class="mbo-modern-shell"><div class="mbo-modern-card"><div class="mbo-modern-kicker">SMART TOOLS</div><h2 class="mbo-section-title" style="font-size:32px">كل شيء في مكان واحد</h2><p class="mbo-section-sub">واجهة واحدة للبحث، المقارنة، حساب الراتب، واستكشاف مسارات التعليم.</p><div class="mbo-tools">
+<button class="mbo-tool" type="button" onclick="document.getElementById('searchInput')?.focus()">🔎 بحث</button>
+<button class="mbo-tool" type="button" onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';localStorage.setItem('mbo-theme',document.documentElement.dataset.theme)">◐ المظهر</button>
+<button class="mbo-tool" type="button" onclick="navigator.share?navigator.share({title:document.title,url:location.href}):navigator.clipboard?.writeText(location.href)">↗ مشاركة</button>
+<button class="mbo-tool" type="button" onclick="window.print()">⎙ طباعة</button></div></div></section><section id="newcomers-hub" class="mbo-modern-shell mbo-articles" aria-label="دليل العرب الجدد في هولندا">
+<div class="mbo-modern-kicker">AHMAD ALZOUBI · NEDERLAND</div><h2 class="mbo-section-title">دليل العرب الجدد في هولندا</h2>
+<p class="mbo-section-sub">من الدراسة والعمل إلى السكن والضرائب والإقامة: محتوى عربي عملي، مرتب ومترابط، يساعدك على فهم النظام الهولندي خطوة بخطوة.</p>
+<div class="mbo-modern-grid" style="margin-top:24px">
+<article class="mbo-modern-card"><div class="mbo-modern-icon">🎓</div><h3>التعليم والدراسة</h3><p>فهم MBO وHBO والجامعة، اختيار التخصص، مستويات اللغة والانتقال بين المسارات.</p></article>
+<article class="mbo-modern-card"><div class="mbo-modern-icon">💼</div><h3>العمل والراتب</h3><p>عقود العمل، الراتب، vakantiegeld، التدريب، البحث عن وظيفة وبناء المسار المهني.</p></article>
+<article class="mbo-modern-card"><div class="mbo-modern-icon">🏠</div><h3>الحياة اليومية</h3><p>السكن، التأمين، المواصلات، الخدمات الحكومية والقرارات التي تؤثر على الحياة اليومية.</p></article>
+<article class="mbo-modern-card"><div class="mbo-modern-icon">🧾</div><h3>المال والضرائب</h3><p>Belastingdienst، aangifte، toeslagen، Kinderbijslag وKindgebonden budget بأسلوب مبسط.</p></article></div>
+<div class="mbo-ad-slot">مساحة إعلانية — ستظهر هنا بعد ربط AdSense</div>
+<div class="mbo-article-grid">
+<article class="mbo-modern-card mbo-article"><div class="mbo-modern-kicker">GIDS 01</div><h3>كيف تبدأ حياتك في هولندا؟</h3><p>خريطة عملية للخطوات الأولى: البلدية، BSN، DigiD، التأمين، السكن، العمل والتعليم، وما الذي يجب ترتيبه أولاً.</p><a class="mbo-article-link" href="#newcomers-hub">اقرأ الدليل ←</a></article>
+<article class="mbo-modern-card mbo-article"><div class="mbo-modern-kicker">GIDS 02</div><h3>فهم نظام التعليم الهولندي</h3><p>من التعليم الأساسي إلى MBO ثم HBO والجامعة، مع شرح مبسط للانتقالات والاختيارات المهنية.</p><a class="mbo-article-link" href="#overview">استكشف المسارات ←</a></article>
+<article class="mbo-modern-card mbo-article"><div class="mbo-modern-kicker">GIDS 03</div><h3>دليل العمل لأول مرة</h3><p>ما الفرق بين أنواع العقود؟ ما معنى bruto وnetto؟ وكيف تقرأ قسيمة الراتب الهولندية؟</p><a class="mbo-article-link" href="#salary">احسب راتبك ←</a></article>
+<article class="mbo-modern-card mbo-article"><div class="mbo-modern-kicker">GIDS 04</div><h3>الضرائب والإقرار السنوي</h3><p>شرح مبسط للمفاهيم الأساسية حول inkomstenbelasting وaangifte، مع روابط للمصادر الرسمية.</p><a class="mbo-article-link" href="#sources">المصادر الرسمية ←</a></article>
+<article class="mbo-modern-card mbo-article"><div class="mbo-modern-kicker">GIDS 05</div><h3>البدلات والمساعدات</h3><p>كيف تفهم Kinderbijslag وKindgebonden budget وغيرها من الخدمات دون الاعتماد على منشورات غير موثوقة.</p><a class="mbo-article-link" href="#sources">تحقق من المصدر ←</a></article>
+<article class="mbo-modern-card mbo-article"><div class="mbo-modern-kicker">GIDS 06</div><h3>الإقامة ولمّ الشمل</h3><p>معلومات توعوية عن IND والإقامة ونقل الأسرة، مع التأكيد دائماً على مراجعة الشروط الرسمية الحالية.</p><a class="mbo-article-link" href="#sources">المواقع الرسمية ←</a></article>
+</div></section>
 
 <nav class="navbar" aria-label="Main navigation">
   <div class="navbar-inner" id="navTabs" role="tablist"></div>
@@ -6592,5 +6628,5 @@ if (document.readyState === "loading") {
 
 /* V3 marker — 2026-09-26 */
 </script>
-</body>
+<script id="ahmad-modern-engine">(()=>{const t=localStorage.getItem("mbo-theme");if(t)document.documentElement.dataset.theme=t;if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));})();</script></body>
 </html>
