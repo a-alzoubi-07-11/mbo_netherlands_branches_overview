@@ -1,0 +1,48 @@
+{
+  "name": "دليل النظام التعليمي الهولندي | Dutch Education Guide",
+  "short_name": "تعليم هولندا",
+  "description": "الدليل الشامل للنظام التعليمي في هولندا — Kinderopvang, VMBO, HAVO, VWO, MBO, HBO, WO, VAVO",
+  "start_url": "/mbo_netherlands_branches_overview/",
+  "scope": "/mbo_netherlands_branches_overview/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0F172A",
+  "background_color": "#F8FAFC",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23F97316' width='192' height='192'/><text x='50%' y='50%' font-size='96' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='system-ui'>🎓</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%23F97316' width='512' height='512'/><text x='50%' y='50%' font-size='256' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='system-ui'>🎓</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "reference"],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23F8FAFC' width='540' height='720'/><text x='270' y='360' font-size='72' text-anchor='middle' dominant-baseline='middle' font-family='system-ui' fill='%230F172A'>📚</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "البحث | Search",
+      "short_name": "🔍",
+      "description": "ابحث عن مسارات تعليمية | Search educational paths",
+      "url": "/mbo_netherlands_branches_overview/#search",
+      "icons": [{
+        "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='40' fill='%23F97316'/><text x='48' y='48' font-size='48' text-anchor='middle' dominant-baseline='middle' font-family='system-ui' fill='white'>🔍</text></svg>",
+        "sizes": "96x96",
+        "type": "image/svg+xml"
+      }]
+    }
+  ]
+}
