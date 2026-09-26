@@ -2548,7 +2548,7 @@ const safeStore = {
   set(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
 };
 const state = {
-  lang: (safeStore.get("lang") || "ar"),
+  lang: (safeStore.get("mbo_site_lang") || "ar"),
   page: "overview",
 };
 
@@ -6576,7 +6576,7 @@ function wireSearch() {
 function setLang(code) {
   if (!I18N[code]) return;
   state.lang = code;
-  safeStore.set("lang", code);
+  safeStore.set("mbo_site_lang", code);
   applyI18n();
   renderNav();
   renderFooterLinks();
