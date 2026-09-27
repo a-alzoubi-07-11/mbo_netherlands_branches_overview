@@ -3,7 +3,7 @@
 ## Implemented
 
 - Removed all Phase 2/My Space assets and references in the preceding release. The new service worker uses network-first requests, clears old `mbo-netherlands-*` caches on activation, and provides `/refresh.html` to clear project caches on an affected device. Previous browser-local favorites/history remain untouched.
-- Optional Google Analytics and Gabster scripts now load only after an explicit choice. Reject and accept have equal prominence; settings may be changed from the page footer. AdSense publisher ID, `ads.txt`, Analytics ID, GTM ID and verification meta are retained. AdSense and GTM execution is paused while Google consent and container configuration are independently checked. No noscript GTM iframe runs before a choice.
+- Optional Google Analytics scripts now load only after an explicit choice. Reject and accept have equal prominence; settings may be changed from the page footer. AdSense publisher ID, `ads.txt`, Analytics ID, GTM ID and verification meta are retained. AdSense and GTM execution is paused while Google consent and container configuration are independently checked. No noscript GTM iframe runs before a choice.
 - Privacy information is available in Arabic and Dutch. Contact uses the visitor's email application; CV and checklist state remain in local browser storage.
 - `scripts/audit-links.py` verifies local static targets and sitemap paths. Seven article pages receive an official reference link through the shared article renderer. The index WebSite structured-data URLs and the project sitemap reference were corrected.
 
