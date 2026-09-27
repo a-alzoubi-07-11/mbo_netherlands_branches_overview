@@ -1,0 +1,15 @@
+name: Site audit on project branches
+
+on:
+  push:
+    branches: ['**']
+    paths-ignore:
+      - 'reports/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    uses: a-alzoubi-07-11/a-alzoubi-07-11.github.io/.github/workflows/site-agents.yml@main
