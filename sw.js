@@ -1,5 +1,5 @@
-const CACHE="mbo-netherlands-v9";
-const CORE=["./","./index.html","./articles.html","./about.html","./privacy.html","./contact.html","./manifest.webmanifest","./assets/phase1.css","./assets/phase1.js","./assets/phase2.css","./assets/phase2.js","./assets/phase3.css","./assets/phase3.js","./assets/article.css","./assets/article.js","./assets/article-bilingual.js"];
+const CACHE="mbo-netherlands-v10";
+const CORE=["./","./index.html","./articles.html","./about.html","./privacy.html","./contact.html","./cv.html","./assets/cv.css","./assets/cv.js","./manifest.webmanifest","./assets/phase1.css","./assets/phase1.js","./assets/phase2.css","./assets/phase2.js","./assets/phase3.css","./assets/phase3.js","./assets/article.css","./assets/article.js","./assets/article-bilingual.js"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener("fetch",e=>{
