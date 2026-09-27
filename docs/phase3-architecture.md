@@ -2,7 +2,7 @@
 
 ## Current static release
 
-GitHub Pages serves the existing HTML pages. Phase 1 owns the task checklist in `mbo_phase1_v1`; Phase 2 owns favorites and reading history in `mbo_phase2_v1`. Phase 3 reads Phase 1 progress and recommends the next task, without creating a second checklist. Language selection continues through `mbo_site_lang`. All progress remains on this device; no account, synchronization, personalized alerts or real visitor total is claimed.
+GitHub Pages serves the existing HTML pages. Phase 1 owns the task checklist in `mbo_phase1_v1`. The former Phase 2 panel has been removed; its browser key `mbo_phase2_v1` is retained only in visitor storage for a future, consent-based import. Phase 3 reads Phase 1 progress and recommends the next task, without creating a second checklist. Language selection continues through `mbo_site_lang`. All progress remains on this device; no account, synchronization, personalized alerts or real visitor total is claimed.
 
 ## Backend migration path
 
@@ -11,3 +11,5 @@ GitHub Pages serves the existing HTML pages. Phase 1 owns the task checklist in 
 3. Add update subscriptions, verified analytics and a visitor counter only when server-side collection, abuse controls, privacy information and measurement definitions are established. Never represent browser-local counts as site-wide traffic.
 
 Keep GitHub Pages as the frontend initially. Serve the API from a separate HTTPS origin with restricted CORS, rate limits and data export/deletion. Avoid collecting immigration documents or identity numbers in the first release.
+
+See `docs/database-readiness.md` for the draft API contract and migration gates.
