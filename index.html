@@ -1031,6 +1031,7 @@ html[data-theme="dark"] body:before{background:radial-gradient(circle at 10% 0%,
 <link rel="stylesheet" href="./assets/phase1.css">
 
 <link rel="stylesheet" href="./assets/phase3.css">
+<link rel="stylesheet" href="./assets/news-ticker.css">
 <link rel="stylesheet" href="./assets/consent.css">
 <script src="./assets/consent.js?v=4" defer></script>
 </head>
@@ -1075,6 +1076,8 @@ html[data-theme="dark"] body:before{background:radial-gradient(circle at 10% 0%,
     </div>
   </div>
 </header>
+
+<section id="news-ticker" class="news-ticker" aria-live="off" hidden></section>
 
 <nav class="mbo-modern-shell site-nav-links" aria-label="روابط الموقع"><div class="mbo-tools" style="justify-content:center"><a class="mbo-tool" href="./articles.html" data-i18n="nav.articles">📰 المقالات</a><a class="mbo-tool" href="./about.html" data-i18n="nav.about">ℹ️ من نحن</a><a class="mbo-tool" href="./privacy.html" data-i18n="nav.privacy">🔒 الخصوصية</a><a class="mbo-tool" href="./contact.html" data-i18n="nav.contact">✉️ تواصل</a></div></nav><section class="hero">
   <div class="hero-inner">
@@ -6619,6 +6622,6 @@ if (document.readyState === "loading") {
 </script>
 <script src="./assets/data-store.js?v=12" defer></script><script src="./assets/phase1.js?v=12" defer></script>
 <script id="ahmad-modern-engine">(()=>{const t=localStorage.getItem("mbo-theme");if(t)document.documentElement.dataset.theme=t;if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));})();</script>
-<script src="./assets/phase3.js?v=15" defer></script><script type="module" src="./assets/firebase-sync.js?v=1"></script>
+<script src="./assets/phase3.js?v=15" defer></script><script src="./assets/news-ticker.js?v=1" defer></script><script type="module" src="./assets/firebase-sync.js?v=1"></script>
 </body>
 </html>

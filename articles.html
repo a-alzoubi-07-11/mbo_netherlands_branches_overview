@@ -24,6 +24,7 @@ html[dir="ltr"] body{text-align:left}html[dir="rtl"] body{text-align:right}
 </style>
 <link rel="stylesheet" href="./assets/consent.css">
 <script src="./assets/consent.js?v=4" defer></script>
+<link rel="stylesheet" href="./assets/news-ticker.css">
 </head>
 <body>
 
@@ -71,4 +72,5 @@ title:"Artikelen en gidsen voor nieuwkomers in Nederland","filters.search":"Zoek
 function apply(){const l=localStorage.getItem("mbo_site_lang")||"ar";document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";document.querySelectorAll("[data-i18n]").forEach(e=>{const v=T[l][e.dataset.i18n];if(v!==undefined)e.textContent=v});document.querySelectorAll("[data-i18n-placeholder]").forEach(e=>{const v=T[l][e.dataset.i18nPlaceholder];if(v!==undefined)e.placeholder=v});document.getElementById("langBtn").textContent=l==="ar"?"🇳🇱 Nederlands":"🇸🇦 العربية"}document.getElementById("langBtn").onclick=()=>{localStorage.setItem("mbo_site_lang",(localStorage.getItem("mbo_site_lang")||"ar")==="ar"?"nl":"ar");apply()};apply();
 const articleSearch=document.getElementById("articleSearch"),topicFilter=document.getElementById("topicFilter"),emptyState=document.getElementById("emptyState");function filterArticles(){const q=articleSearch.value.trim().toLocaleLowerCase(),topic=topicFilter.value;let shown=0;document.querySelectorAll(".card[data-topic]").forEach(card=>{const matchesText=card.textContent.toLocaleLowerCase().includes(q),matchesTopic=topic==="all"||card.dataset.topic===topic;card.style.display=matchesText&&matchesTopic?"":"none";if(matchesText&&matchesTopic)shown++});emptyState.style.display=shown?"none":"block"}articleSearch.addEventListener("input",filterArticles);topicFilter.addEventListener("change",filterArticles);
 </script>
+<script src="./assets/news-ticker.js?v=1" defer></script>
 </body></html>
