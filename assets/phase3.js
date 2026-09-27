@@ -34,6 +34,8 @@ function loadGabster(){
   script.addEventListener("error",()=>{script.remove()},{once:true});
   document.body.appendChild(script);
 }
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",loadGabster,{once:true});
-else loadGabster();
+function maybeLoad(){if(window.MboConsent?.allowed("external"))loadGabster()}
+window.addEventListener("mbo:consentchange",maybeLoad);
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",maybeLoad,{once:true});
+else maybeLoad();
 })();

@@ -1,20 +1,14 @@
-const CACHE="mbo-netherlands-v12";
-const CORE=["./","./index.html","./articles.html","./about.html","./privacy.html","./contact.html","./cv.html","./assets/cv.css","./assets/cv.js","./manifest.webmanifest","./assets/phase1.css","./assets/phase1.js","./assets/data-store.js","./assets/phase3.css","./assets/phase3.js","./assets/article.css","./assets/article.js","./assets/article-bilingual.js"];
-self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
-self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener("fetch",e=>{
-  if(e.request.method!=="GET")return;
-  e.respondWith(
-    caches.match(e.request).then(cached=>{
-      const request=e.request;
-      const fresh=fetch(request).then(response=>{
-        if(response.ok && new URL(request.url).origin===location.origin){
-          const copy=response.clone();
-          caches.open(CACHE).then(c=>c.put(request,copy));
-        }
-        return response;
-      }).catch(()=>cached);
-      return cached || fresh;
-    })
-  );
+const CACHE="mbo-netherlands-v13";
+const CORE=["./","./index.html","./articles.html","./about.html","./privacy.html","./editorial-policy.html","./assets/policy.css","./contact.html","./cv.html","./refresh.html","./manifest.webmanifest","./assets/consent.css","./assets/consent.js","./assets/data-store.js","./assets/phase1.css","./assets/phase1.js","./assets/phase3.css","./assets/phase3.js","./assets/cv.css","./assets/cv.js","./assets/article.css","./assets/article.js","./assets/article-bilingual.js"];
+self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith("mbo-netherlands-")&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
+self.addEventListener("fetch",event=>{
+ const request=event.request;
+ if(request.method!=="GET"||new URL(request.url).origin!==self.location.origin)return;
+ event.respondWith(fetch(request).then(response=>{
+  if(response.ok&&response.type==="basic"){
+   const copy=response.clone();event.waitUntil(caches.open(CACHE).then(cache=>cache.put(request,copy)));
+  }
+  return response;
+ }).catch(()=>caches.match(request).then(cached=>cached||Response.error())));
 });

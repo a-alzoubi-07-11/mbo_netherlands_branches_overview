@@ -10,4 +10,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://a-alzoubi-07-11.github.io/sitemap.xml
+Sitemap: https://a-alzoubi-07-11.github.io/mbo_netherlands_branches_overview/sitemap.xml

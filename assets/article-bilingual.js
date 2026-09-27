@@ -12,6 +12,15 @@ function applyShell(l){const s=shell[l];document.documentElement.lang=l;document
 let ar=document.getElementById("article-ar"),nl=document.getElementById("article-nl"),btn=document.getElementById("articleLang");
 if(!ar||!nl){const original=document.querySelector(".container");if(!original)return;ar=original.cloneNode(true);ar.id="article-ar";ar.classList.add("article-language");const wrap=document.createElement("div");wrap.id="article-nl";wrap.className="article-language";wrap.hidden=true;wrap.innerHTML='<div class="container"><h1>'+d.title+'</h1>'+d.body+"<p><a href='../index.html'>← Terug naar de homepage</a></p></div>";original.replaceWith(ar,wrap);nl=wrap}
 if(!btn){const bar=document.createElement("div");bar.className="article-langbar";bar.innerHTML='<a href="../index.html">الرئيسية / Home</a><button id="articleLang" type="button" aria-label="تغيير اللغة">NL</button>';document.body.insertBefore(bar,document.body.firstChild);btn=bar.querySelector("#articleLang")}
+const OFFICIAL={
+"digid-registration-guide.html":["https://www.digid.nl/en/apply-and-activate","DigiD"],
+"mbo-conditions.html":["https://www.duo.nl/particulier/staatsexamen-nt2/hoe-het-staatsexamen-nt2-werkt.jsp","DUO"],
+"employment-contracts-labor-law-2026.html":["https://www.rijksoverheid.nl/themas/werk/arbeidsovereenkomst-en-cao","Rijksoverheid"],
+"annual-tax-return-2026.html":["https://www.belastingdienst.nl/","Belastingdienst"],
+"childcare-allowance-kinderopvangtoeslag.html":["https://www.belastingdienst.nl/wps/wcm/connect/nl/kinderopvangtoeslag/content/hoe-moet-ik-kinderopvangtoeslag-aanvragen","Dienst Toeslagen"],
+"family-reunification-mvv-ind.html":["https://ind.nl/en/residence-permits/asylum/asylum-family-reunification","IND"],
+"eu-permanent-residence-netherlands.html":["https://ind.nl/en/replace-extend-renew-and-change/permanent-residency/permanent-residence-permit","IND"]};
+if(OFFICIAL[p]){for(const [node,l] of [[ar,"ar"],[nl,"nl"]]){const box=document.createElement("aside");box.className="article-official";const label=document.createElement("strong");label.textContent=l==="ar"?"تحقق من المصدر الرسمي قبل اتخاذ أي إجراء":"Controleer de officiële bron voordat je iets regelt";const link=document.createElement("a");link.href=OFFICIAL[p][0];link.target="_blank";link.rel="noopener noreferrer";link.textContent=OFFICIAL[p][1]+" ↗";box.append(label,link);node.appendChild(box)}}
 function setLang(l){const isNL=l==="nl";ar.hidden=isNL;nl.hidden=!isNL;ar.style.display=isNL?"none":"";nl.style.display=isNL?"":"none";btn.textContent=isNL?"AR":"NL";localStorage.setItem("mbo_site_lang",l);applyShell(l)}
 if(!btn.dataset.bound){btn.dataset.bound="1";btn.addEventListener("click",()=>setLang(localStorage.getItem("mbo_site_lang")==="nl"?"ar":"nl"))}
 setLang(localStorage.getItem("mbo_site_lang")==="nl"?"nl":"ar");
