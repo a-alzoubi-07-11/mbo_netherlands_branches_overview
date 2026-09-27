@@ -35,3 +35,23 @@ async function loadCounter(){const el=document.getElementById("p3count");if(!el)
 function init(){state.lang=localStorage.getItem("mbo_site_lang")||"ar";shell();window.addEventListener("mbo:languagechange",()=>{state.lang=localStorage.getItem("mbo_site_lang")||"ar";render()});document.addEventListener("click",e=>{if(e.target.closest(".lang-opt"))setTimeout(()=>{state.lang=localStorage.getItem("mbo_site_lang")||"ar";render()},50)})}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
+
+/* Phase 3 — Professional AI assistant
+ * The official Gabster loader is isolated from the site's own UI and loaded once.
+ */
+(()=>{"use strict";
+const GABSTER_SRC="https://widget.gabster.ai/loader?cbid=6ab64b269dd3b700e6acc092";
+function loadGabster(){
+  if(document.querySelector('script[data-gabster-widget]')) return;
+  const script=document.createElement("script");
+  script.src=GABSTER_SRC;
+  script.async=true;
+  script.defer=true;
+  script.setAttribute("data-gabster-widget","");
+  script.setAttribute("data-embed-type","widget");
+  script.addEventListener("error",()=>{script.remove()},{once:true});
+  document.body.appendChild(script);
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",loadGabster,{once:true});
+else loadGabster();
+})();
