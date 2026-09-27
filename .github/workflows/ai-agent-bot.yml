@@ -1,0 +1,72 @@
+name: 🚀 Autonomous AI Agents Team 24/7
+
+on:
+  schedule:
+    # ملاحظة: cron يعمل بتوقيت UTC فقط.
+    # '0 8 * * *' = 08:00 UTC = 10:00 صباحاً بتوقيت أمستردام صيفاً (09:00 شتاءً).
+    # لجعله 8 صباحاً بتوقيت هولندا صيفاً استخدم: '0 6 * * *'
+    - cron: '0 8 * * *'
+  workflow_dispatch: # تشغيل يدوي بضغطة زر من تبويب Actions في GitHub
+
+# منع تداخل تشغيلين متزامنين للوكيل
+concurrency:
+  group: ai-agents
+  cancel-in-progress: false
+
+permissions:
+  contents: write        # حفظ التقارير في المستودع
+  pull-requests: write   # فتح Pull Requests عند الحاجة
+
+jobs:
+  ai-agents-pipeline:
+    name: Run AI Agents Squad
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      # 1. سحب كود موقع MBO من المستودع
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. إعداد بيئة بايثون للوكلاء
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. تثبيت المكتبات اللازمة
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      # 4. وكيل فحص الكود والواجهة والروابط المكسورة
+      - name: Run Code & UI Optimization Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_API_BASE: ${{ vars.AI_API_BASE }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+        run: |
+          echo "🤖 [Code Agent]: Scanning repository code, HTML health & broken links..."
+          python .github/scripts/code_agent.py
+
+      # 5. وكيل البحث وتحسين محركات البحث وتوليد أفكار المحتوى
+      - name: Run SEO & Content Research Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_API_BASE: ${{ vars.AI_API_BASE }}
+          AI_MODEL: ${{ vars.AI_MODEL }}
+        run: |
+          echo "🔍 [SEO Agent]: Auditing SEO and generating content ideas..."
+          python .github/scripts/seo_agent.py
+
+      # 6. حفظ التقارير اليومية تلقائياً في المستودع (مجلد reports/ فقط)
+      - name: Commit and Push Agent Results
+        if: always()
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 [Autonomous AI Agents] Daily SEO report & code audit"
+          branch: main
+          file_pattern: "reports/*.md"
