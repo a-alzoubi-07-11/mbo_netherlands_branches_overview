@@ -1,31 +1,34 @@
-# Database readiness — frontend contract
+# Database and backend readiness
 
-## Current deployment
+## Current state
 
-GitHub Pages remains the static frontend. `assets/data-store.js` is the only boundary for checklist and CV draft storage. It currently uses the existing browser keys `mbo_phase1_v1` and `mbo_cv_draft_v1`; no data leaves the browser. The removed “My Space” code used `mbo_phase2_v1` for favorites and history. Do not erase that legacy key from visitors' browsers before users have a reviewed migration option. The site does not presently offer favorites/history UI, accounts, sync, remote notifications or real visitor totals.
+The frontend is GitHub Pages. Browser-only storage remains the default for checklist and CV draft. Firebase project `gidsnederland-35a81` has been configured by its owner with Firestore Standard, Google Authentication and the GitHub Pages hostname. Optional checklist sync code and strict rules are in this repository, but the owner must publish the rules in Firebase Console before sync is usable. See `docs/firebase-setup.md`.
 
-## Proposed backend contract (not live)
+No live news CMS, company registration workflow, visitor counter API, payments, alerts, or public user profiles are active.
 
-Host an HTTPS API separately from GitHub Pages. Authenticate users with a managed identity provider, then authorize every request against the authenticated subject on the server. Never accept a user ID supplied by the browser as proof of ownership. Restrict CORS to the production Pages origin and configured preview origins. Use short-lived sessions, rate limits, CSRF protection where cookies are used, and server-side input limits. No database credentials or service-role tokens go into the repository or browser.
+## Data boundaries
 
-| Resource | Operations | Example fields |
-| --- | --- | --- |
-| `GET/PUT /v1/me/checklist` | Fetch or replace the signed-in user's checklist | `version`, `checks` (known task IDs only), `updatedAt` |
-| `GET/PUT /v1/me/favorites` | Fetch or replace article URLs saved by the user | canonical article IDs, `updatedAt` |
-| `GET/PUT /v1/me/history` | Optional, explicit opt-in | article IDs, last-read timestamp |
-| `GET /v1/content/updates` | Published bilingual updates only | stable ID, Arabic/Dutch text, official source, verified date |
-| `POST /v1/admin/content` | Editor-only publishing after review | bilingual content, sources, revision, status |
+| Data | Initial storage | Public? | Rule |
+| --- | --- | --- | --- |
+| Task checklist | `/users/{uid}/checklist/current` in Firestore | No | Owner only; explicit sync action; fixed known task IDs |
+| CV draft | Browser storage | No | Never cloud upload in initial release |
+| Articles and news | Git-backed bilingual Markdown/JSON | Published output only | Human review, sources and timestamps; static HTML build |
+| Provider application | Future private application record | No | Applicant can edit pending fields only; admin review required |
+| Approved provider profile | Future public listing collection/build | Yes, selected fields | Admin-created/approved; applicant cannot publish or self-verify |
+| Visitor metric | Future protected counter API | Aggregate only | No browser write access to a shared total; define measurement and abuse limits |
 
-Database records should have unique `(user_id, item_id)` keys for favorites and checklist items, timestamps, and server authorization rules. Source URLs and verification dates belong to content records. Public visitor counts need a server-side counting definition and abuse controls before display.
+## Dashboard workflow
 
-## Migration and privacy
+The editorial dashboard must authenticate authors and send changes through a review/publish workflow. GitHub repository write tokens remain server-side or within the trusted CMS integration; never expose them in browser JS. The publish step runs a static build that produces SEO-ready HTML, canonical URLs, Article/NewsArticle or FAQ schema only where justified, bilingual metadata and sitemap entries while preserving existing routes.
 
-At sign-in, show the user a preview of local progress and offer an explicit import; merge by stable task/article IDs, not page titles. Keep the local copy until the server confirms a successful write. Provide export and deletion routes. Do not silently import the old `mbo_phase2_v1` key. CV drafts contain direct contact details: keep them device-local for now; any later cloud CV storage must be a separate explicit opt-in with a clear retention/deletion policy. Do not store BSN, permit numbers or uploaded identity documents in the initial schema.
+News records should include ID, category, Arabic/Dutch title and summary, affected audience, practical consequence, official source, source date, effective date, verification date, status (`confirmed`, `announced`, `proposed`), reviewer and publication state. Do not present an announcement or proposal as a policy already in effect.
 
-## Content workflow
+Company records must distinguish private applicant details from approved public listing fields. Establish verification, consent, complaint, correction/deletion and retention procedures before opening registration. Initially do not process payments, store identity documents, or advertise tax/immigration credentials without verification.
 
-Use a Git-backed bilingual content schema and a build step that emits static HTML at the current article paths. Preserve canonical URLs, sitemap, structured data, Google tags and human review of official sources. Adding the backend does not require migrating page rendering away from GitHub Pages.
+## Visitor count design gate
 
-## Activation gate
+Do not use a browser-side Firestore increment for a public total. A trustworthy count needs a server endpoint, bot/rate-abuse controls and a definition (pageviews vs. deduplicated visits); describe any identifiers and retention in the privacy notice. Firebase Cloud Functions requires the Blaze plan, so it is not a strict Spark-only choice. Evaluate a free external Worker/DB or privacy-oriented analytics service and its current limits before implementation.
 
-Before configuring a live API: choose a hosting/auth provider, define the privacy policy and retention period, review the schema and threat model, then implement and test the authenticated API. Only then switch `data-store.js` to remote reads/writes for signed-in users while retaining the local adapter for guests and offline access. Never infer that a backend is active because this document or adapter exists.
+## Privacy and account controls
+
+Guests continue to use the site without signing in. Google login is for optional website sync and has no connection to DigiD. Provide local export/deletion and an in-product account/cloud deletion route. Collect no BSN, permit number, uploaded identity document, or cloud CV in the first release. Keep policy wording aligned with actual Firebase region, fields, purpose and retention.

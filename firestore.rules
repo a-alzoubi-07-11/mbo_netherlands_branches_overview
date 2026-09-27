@@ -1,8 +1,33 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Start closed. Enable the scoped rule only when Authentication and the
-    // consent-based checklist synchronization client are deployed together.
+    // A user may access only their own checklist document. CV drafts and all
+    // other collections remain device-local / closed.
+    function owns(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    function validChecklist(data) {
+      return data.keys().hasAll(['checks', 'updatedAt'])
+        && data.keys().hasOnly(['checks', 'updatedAt'])
+        && data.checks is map
+        && data.checks.keys().hasOnly([
+          'id', 'insurance', 'tax', 'study', 'work', 'family', 'residence'
+        ])
+        && data.checks.get('id', false) is bool
+        && data.checks.get('insurance', false) is bool
+        && data.checks.get('tax', false) is bool
+        && data.checks.get('study', false) is bool
+        && data.checks.get('work', false) is bool
+        && data.checks.get('family', false) is bool
+        && data.checks.get('residence', false) is bool
+        && data.updatedAt == request.time;
+    }
+    match /users/{uid}/checklist/{docId} {
+      allow get: if owns(uid) && docId == 'current';
+      allow create, update: if owns(uid) && docId == 'current'
+        && validChecklist(request.resource.data);
+      allow delete: if owns(uid) && docId == 'current';
+    }
     match /{document=**} {
       allow read, write: if false;
     }
